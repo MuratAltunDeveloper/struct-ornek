@@ -1,0 +1,152 @@
+Soru: Bir esnaf müþterilerinin veresiye borçlarýný struct yapýsndaki ad-soyad, telefon ve borç
+miktarý bilgilerini bir struct dizisi içerisinde tutmaktadýr. Müþteri ad-soyad, telefon ve ödenen-
+borç bilgilerini struct tipinde parametre olarak alan BilgiGuncelle fonksiyonunda ilgili ad-
+soyada sahip müþterinin belirtilen miktarda borcu silinerek struct dizisinde ilgili müþteri
+bilgileri güncellenmelidir. Parametre olarak struct dizisi alan MusteriListele fonksiyonu
+struct dizisi içerisindeki müþterilerin bilgilerini ad-soyada göre sýralayarak listelemeli ve
+sadece BilgiGuncelle fonksiyonu içerisinden çaðrýlmalýdýr.
+Uyarýlar:
+1. Musteri struct yapýsý char dizisi tipinde ad-soyad, int tipinde telefon ve yine int tipinde
+   borç deðiþkenlerini içermelidir.
+2. Ýlk baþta bilgileri aþaðýda verilen müþteri kayýtlarý kod içerisinde aþaðýdaki sýra ile struct
+   dizisine baþlangýç deðeri olarak eklenmeli ve dizi boyutu 15 olarak tanýmlanmalýdýr.
+Sýra   Ad-Soyad             Tel          Borç       Sýra    Ad-Soyad          Tel          Borç
+1      halil ibrahim        5052341134   2000       6      Erkut Karaçelebi   5356782145   1500
+2      Seyfullah Aydýnlýk   5063457626   3150       7      Þahin Tekpýnar     5026542113   6550
+3      Murat  Altun         5027653421   20280      8      Dilaver Duman      5602564421   8000
+4      Þimþeker Kahveci     5014532365   15425      9      Gülnar Yeðit       5346569009   685
+5      Ender Iþýklý         5504762387   875        10     Eslem Öðünç        5057652311   1900
+
+3. BilgiGuncelle fonksiyonu 2 parametreye sahip olmalýdýr. Parametrelerden birisi dýþarýdan
+   girilen ilgili müþterinin ad-soyad, güncel telefon ve ödenen-borç bilgisini içeren struct
+   tipinde deðiþkenlerin deðeri ise tüm müþterilerin bilgisini tutan struct dizisidir. Ayný
+   zamanda fonksiyonun geri dönüþ deðeri void olmalýdýr.
+4. MusteriListele fonksiyonu parametre olarak tüm müþterilerin bilgisini tutan struct
+   dizisini almalý ve bu fonksiyon sadece BilgiGuncelle fonksiyonu içerisinden çaðrýlmalýdýr.
+   Ayrýca geri dönüþ deðeri void olmalýdýr.
+
+5. Kullanýcýdan öncelikle müþterinin telefon no bilgisi istenmeli sonrasýnda kullanýcýdan
+   alýnan bu telefon no bilgisi ile struct dizisinde ilgili müþteri bilgileri bulunarak ekrana
+   müþterinin ad-soyad bilgisi yazdýrýldýktan sonra ne kadar borç sileneceði kullanýcýya
+   sorulmalýdýr. Sonrasýnda güncel borç hesaplanarak müþteri bilgileri struct tipinde bir
+   deðiþkenle BilgiGuncelle fonksiyonuna parametre olarak gönderilmeli ve dizideki ilgili
+   müþteri bilgileri fonksiyon içerisinde güncellenmelidir.
+6. Dizinin son hali main içerisinde ekrana yazdýrýlmalýdýr.
+
+
+
+
+CODE:
+#include <stdio.h>
+#include <stdlib.h>
+#include<string.h>
+struct musteri
+{
+    char adsoyad[25];
+    int telefon;
+    int borc;
+}d2[10];
+void MusteriListele(struct musteri *z)
+{
+{struct musteri tmp;
+int i,j;
+
+for(i=0;i<10;i++)
+{
+    for(j=0;j<10;j++)
+    {
+        if(((z+i)->adsoyad[0])>((z+j)->adsoyad[0]))
+        {
+            tmp=*(z+i);
+            *(z+i)=*(z+j);
+            *(z+j)=tmp;
+        }
+    }
+}
+}
+}
+void BilgiGuncelle(struct musteri x,struct musteri *y)
+{
+    int i,j;
+    for(i=0;i<10;i++)
+    {
+        if(((y+i)->telefon)==x.telefon)
+        {    
+        
+            (y+i)->borc=x.borc;
+
+        }
+    }
+    struct musteri d2[10];
+for(i=0;i<10;i++)
+{
+  if((y+i)->borc<0)
+        {
+        //	printf("******%d\n",(y+i)->borc);
+		(y+i)->borc=0;
+	    }
+        strcpy((d2[i].adsoyad),(y+i)->adsoyad);
+        d2[i].telefon=(y+i)->telefon;
+        d2[i].borc=(y+i)->borc;
+ 
+}
+
+    MusteriListele(&d2);
+}
+int main()
+{ int i,k;
+  struct musteri b;
+  int ode;
+struct musteri d[15];
+strcpy(d[0].adsoyad,"halilibrahim");
+d[0].telefon=5052341134;
+d[0].borc=2000;
+strcpy(d[1].adsoyad,"SeyfullahAydinlik");
+d[1].telefon=5063457626;
+d[1].borc=3150;
+strcpy(d[2].adsoyad,"Murataltun");
+d[2].telefon=5027653421;
+d[2].borc=20280;
+strcpy(d[3].adsoyad,"SimsekerKahveci");
+d[3].telefon=5014532365;
+d[3].borc=15425;
+strcpy(d[4].adsoyad,"KamilKoc");
+d[4].telefon=5504762387;
+d[4].borc=875;
+strcpy(d[5].adsoyad,"Erkutcelebi");
+d[5].telefon=5356782145;
+d[5].borc=1500;
+strcpy(d[6].adsoyad,"Sahinpinar");
+d[6].telefon=5026542113;
+d[6].borc= 6550;
+strcpy(d[7].adsoyad,"DilaverDuman");
+d[7].telefon=5602564421;
+d[7].borc=8000;
+strcpy(d[8].adsoyad,"GulnarYegit");
+d[8].telefon=5346569009;
+d[8].borc=685;
+strcpy(d[9].adsoyad,"EslemOgunc");
+d[9].telefon=5057652311 ;
+d[9].borc=1900;
+    printf("borcu odenecek musterinin telefon numarasini giriniz:");
+    scanf("%d",&b.telefon);
+    for(i=0;i<10;i++)
+    {
+        if(d[i].telefon==b.telefon)
+        {
+            strcpy(b.adsoyad,d[i].adsoyad);
+           b.borc=d[i].borc;
+            b.telefon=d[i].telefon;
+        }
+    }
+    printf("musterinin adi-soyadi:%s\n",b.adsoyad);
+    printf("odenecek borc miktarini giriniz:");
+    scanf("%d",&ode);
+    b.borc=b.borc-ode;
+    BilgiGuncelle(b,&d);
+for(k=0;k<10;k++)
+{
+    printf("%s %d %d\n",d[k].adsoyad,d[k].telefon,d[k].borc);
+}
+    return 0;
+}
